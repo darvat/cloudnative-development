@@ -1,22 +1,30 @@
 {
-  "name": "TODO",
-  "description": "TODO",
+  "name": "cloudnative-webdev",
+  "description": "Cloudnative Web Development",
   "version": "0.0.1",
   "scripts": {
     "dev": "sapper dev",
     "build": "sapper build --legacy",
-    "export": "sapper export --legacy",
+    "export": "sapper export ./firebase/public --legacy",
     "start": "node __sapper__/build",
-    "postinstall": "npm install --prefix firebase"
+    "postinstall": "npm install --prefix firebase",
+    "deploy:firebase": "npm run deploy --prefix firebase",
+    "deploy:clean": "rm -fr __sapper__ ./firebase/public",
+    "deploy": "run-s deploy:clean export deploy:firebase"
   },
   "dependencies": {
     "compression": "^1.7.1",
+    "husky": "^4.3.8",
     "polka": "next",
+    "pretty-quick": "^3.1.0",
     "sirv": "^1.0.0"
   },
+  "husky-run": {
+    "hooks": {
+      "pre-commit": "npx lint-staged"
+    }
+  },
   "devDependencies": {
-    "sapper": "^0.28.0",
-    "svelte": "^3.17.3",
     "@babel/core": "^7.0.0",
     "@babel/plugin-syntax-dynamic-import": "^7.0.0",
     "@babel/plugin-transform-runtime": "^7.0.0",
@@ -29,6 +37,9 @@
     "@rollup/plugin-url": "^5.0.0",
     "rollup": "^2.3.4",
     "rollup-plugin-svelte": "^7.0.0",
-    "rollup-plugin-terser": "^7.0.0"
+    "rollup-plugin-terser": "^7.0.0",
+    "sapper": "^0.28.0",
+    "svelte": "^3.17.3",
+    "yarn-run-all": "^3.1.1"
   }
 }
