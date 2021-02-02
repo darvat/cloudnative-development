@@ -10,10 +10,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install dependencies
-        run: yarn
+        run: npm install
       - name: Bootstrap all services
-        run: yarn run bootstrap
+        run: npm run bootstrap
       - name: Deploy the web service
-        run: yarn run deploy --prefix services/web
+        run: npm run deploy --prefix services/web
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
