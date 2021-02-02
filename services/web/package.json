@@ -3,7 +3,9 @@
   "description": "Cloudnative Web Development",
   "version": "0.0.1",
   "scripts": {
-    "dev": "sapper dev",
+    "dev": "run-p dev:*",
+    "dev:firebase": "npm run dev --prefix firebase",
+    "dev:sapper": "sapper dev",
     "build": "sapper build --legacy",
     "export": "sapper export ./firebase/public --legacy",
     "start": "node __sapper__/build",
@@ -18,11 +20,6 @@
     "polka": "next",
     "pretty-quick": "^3.1.0",
     "sirv": "^1.0.0"
-  },
-  "husky-run": {
-    "hooks": {
-      "pre-commit": "npx lint-staged"
-    }
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",

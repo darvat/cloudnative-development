@@ -3,7 +3,8 @@ on:
   push:
     branches:
       - master
-      - add-deployment-github-action
+    paths:
+      - "services/web/**"
 jobs:
   deploy:
     runs-on: ubuntu-latest
