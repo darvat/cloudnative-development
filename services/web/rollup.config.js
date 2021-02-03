@@ -8,6 +8,8 @@ import babel from "@rollup/plugin-babel"
 import { terser } from "rollup-plugin-terser"
 import config from "sapper/config/rollup.js"
 import pkg from "./package.json"
+import sveltePreprocess from "svelte-preprocess"
+import tailwindcss from "tailwindcss"
 
 const mode = process.env.NODE_ENV
 const dev = mode === "development"
@@ -20,6 +22,12 @@ const onwarn = (warning, onwarn) =>
     /[/\\]@sapper[/\\]/.test(warning.message)) ||
   onwarn(warning)
 
+const sveltePreprocessOptions = sveltePreprocess({
+  postcss: {
+    plugins: [tailwindcss],
+  },
+})
+
 export default {
   client: {
     input: config.client.input(),
@@ -30,6 +38,7 @@ export default {
         "process.env.NODE_ENV": JSON.stringify(mode),
       }),
       svelte({
+        preprocess: sveltePreprocessOptions,
         compilerOptions: {
           dev,
           hydratable: true,
@@ -89,6 +98,7 @@ export default {
         "process.env.NODE_ENV": JSON.stringify(mode),
       }),
       svelte({
+        preprocess: sveltePreprocessOptions,
         compilerOptions: {
           dev,
           generate: "ssr",

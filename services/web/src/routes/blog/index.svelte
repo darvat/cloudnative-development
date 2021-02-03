@@ -18,10 +18,10 @@
 </style>
 
 <svelte:head>
-	<title>Blog</title>
+	<title >Blog</title>
 </svelte:head>
 
-<h1>Recent posts</h1>
+<h1 class="text-red-600">Recent posts</h1>
 
 <ul data-cy="blog-posts">
 	{#each posts as post}
