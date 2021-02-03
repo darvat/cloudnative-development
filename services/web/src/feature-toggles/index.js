@@ -6,20 +6,11 @@ export const FEATURE_TOGGLES = {
   },
 }
 
-const setFeatureTogglesStore = (configValues) =>
-  Object.keys(FEATURE_TOGGLES).forEach((toggleKey) => {
-    const featureToggleName = FEATURE_TOGGLES[toggleKey].name
-    if (configValues[featureToggleName]) {
-      featureTogglesStore.setFeatureToggle(
-        featureToggleName,
-        configValues[featureToggleName].asBoolean()
-      )
-    }
-  })
+const { setFeatureTogglesStore } = featureTogglesStore
 
 export const initFeatureToggles = async () => {
   const remoteConfig = window.firebase.remoteConfig()
   await remoteConfig.fetchAndActivate()
-  setFeatureTogglesStore(remoteConfig.getAll())
+  setFeatureTogglesStore(FEATURE_TOGGLES, remoteConfig.getAll())
   return remoteConfig
 }
