@@ -1,1 +1,3 @@
 node_modules
+/services/web/cypress/screenshots
+/services/web/cypress/videos
