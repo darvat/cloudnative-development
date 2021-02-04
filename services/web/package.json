@@ -7,7 +7,7 @@
     "dev:firebase": "npm run dev --prefix firebase",
     "dev:sapper": "sapper dev",
     "build": "sapper build --legacy",
-    "export": "NODE_ENV=production sapper export ./firebase/public --legacy",
+    "export": "NODE_ENV=production sapper export ./firebase/public --legacy --entry /admin",
     "start": "node __sapper__/build",
     "postinstall": "npm install --prefix firebase",
     "deploy:firebase": "npm run deploy --prefix firebase",

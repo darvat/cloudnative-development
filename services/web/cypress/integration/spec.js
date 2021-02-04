@@ -11,7 +11,7 @@ describe("Blog posts", () => {
   })
   posts.forEach((post) => {
     it(`the about page has link to ${post.title}`, () => {
-      cy.contains("[data-cy=blog-posts] li a", post.title).should(
+      cy.contains("[data-cy=blog-posts]  a", post.title).should(
         "have.attr",
         "href",
         `blog/${post.slug}`

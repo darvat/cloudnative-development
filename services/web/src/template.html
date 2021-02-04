@@ -10,6 +10,11 @@
     <link rel="stylesheet" href="global.css" />
     <link rel="manifest" href="manifest.json" crossorigin="use-credentials" />
     <link rel="icon" type="image/png" href="favicon.png" />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css"
+    />
 
     <!-- Sapper generates a <style> tag containing critical CSS
 	     for the current page. CSS for the rest of the app is
@@ -43,6 +48,8 @@
       https://firebase.google.com/docs/web/setup#available-libraries -->
     <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-analytics.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-remote-config.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
 
     <script>
       // Your web app's Firebase configuration
@@ -59,6 +66,9 @@
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig)
       firebase.analytics()
+    </script>
+    <script>
+      var firebaseAuthUi = new firebaseui.auth.AuthUI(firebase.auth())
     </script>
 
     <!-- Sapper creates a <script> tag containing `src/client.js`
